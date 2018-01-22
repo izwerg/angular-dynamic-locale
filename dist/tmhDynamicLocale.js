@@ -240,9 +240,9 @@ angular.module('tmh.dynamicLocale', []).config(['$provide', function($provide) {
       }
     };
 
-    function loadLocaleFn(localeId) {
+    function loadLocaleFn(localeId, runtimeProperties) {
       var baseProperties = {locale: localeId, angularVersion: angular.version.full};
-      return loadLocale(localeLocation(angular.extend({}, extraProperties, baseProperties)), locale, localeId, $rootScope, $q, tmhDynamicLocaleCache, $timeout);
+      return loadLocale(localeLocation(angular.extend({}, extraProperties, baseProperties, runtimeProperties)), locale, localeId, $rootScope, $q, tmhDynamicLocaleCache, $timeout);
     }
   }];
 }]).provider('tmhDynamicLocaleCache', function() {
