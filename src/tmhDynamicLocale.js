@@ -236,6 +236,7 @@ angular.module('tmh.dynamicLocale', []).config(['$provide', function($provide) {
     };
 
     function loadLocaleFn(localeId, runtimeProperties) {
+      if (!runtimeProperties) return $q.when();
       var baseProperties = {locale: localeId, angularVersion: angular.version.full};
       return loadLocale(localeLocation(angular.extend({}, extraProperties, baseProperties, runtimeProperties)), locale, localeId, $rootScope, $q, tmhDynamicLocaleCache, $timeout);
     }
